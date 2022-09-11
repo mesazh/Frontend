@@ -21,7 +21,7 @@ const NavbarContainer = styled.div`
 background-color: black;
 width:100%;
 padding:0;
-position:absolute;
+position:fixed;
 margin-top:0;
 display:flex;
 flex-flow:row nowrap;
