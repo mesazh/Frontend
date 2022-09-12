@@ -7,10 +7,10 @@ interface Props {}
 const PeopleSection = () => {
     return <div>
     <PeopleSectionContainer>
-    <NewPeople>
+    {/* <NewPeople>
       <PeopleIcon />
-    </NewPeople>
-    #online people here
+    </NewPeople> */}
+    #regular users here
   </PeopleSectionContainer>
 </div>
 }
