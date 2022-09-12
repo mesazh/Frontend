@@ -60,10 +60,10 @@ const Sidebar = () => {
           )}
           </SectionToDisplay>
       </FirstHalf>
-      <ThemeContainer>
+      {/* <ThemeContainer>
         <ColorLensOutlinedIcon />
         Theme
-      </ThemeContainer>
+      </ThemeContainer> */}
     </SidebarContainer>
   );
 };

@@ -41,7 +41,7 @@ color:white;
   }
   display:flex;
   flex-flow:row nowrap;
-  justify-content:flex-start;
+  justify-content:center;
   align-items:center;
   padding-left:20px;
   gap:10px;
