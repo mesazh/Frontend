@@ -87,24 +87,21 @@ const Sidebar = () => {
           Contact / Group Name
         </MessageSectionHeader>
         <MainMessageContainer>
-        <User1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Exercitationem in fuga animi ipsam aut repudiandae, aliquam laborum
-          neque beatae! Animi impedit officiis ratione quia enim culpa nihil.
-          Alias, doloribus rem?
-        </User1>
-        <User2>
-          {`Today  :  ${Date()}`}
-          <br></br>
-          {`Destination  :  18 November 2070`}
-          <br></br>
-          {`Days left  :  ${Math.trunc(
-            (new Date("November 18, 2070 23:15:30").getTime() -
-              new Date().getTime()) /
-              (1000 * 60 * 60 * 24)
-          )}`}
+          <User1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </User1>
+          <User2>
+            {`Today  :  ${Date()}`}
+            <br></br>
+            {`Destination  :  18 November 2070`}
+            <br></br>
+            {`Days left  :  ${Math.trunc(
+              (new Date("November 18, 2070 23:15:30").getTime() -
+                new Date().getTime()) /
+                (1000 * 60 * 60 * 24)
+            )}`}
           </User2>
-          </MainMessageContainer>
+        </MainMessageContainer>
       </SecondHalf>
     </SidebarContainer>
   );
@@ -203,27 +200,29 @@ const SecondHalf = styled.div`
   border-left: 1px solid black;
   display: flex;
   flex-flow: column nowrap;
-  /* justify-content: space-evenly; */
-  gap: 10px;
+  gap: 5px;
   height: 1000px;
+  width: 980px;
 `;
 
 const MainMessageContainer = styled.div`
-
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
 `;
 
 const User1 = styled.div`
   /* width: 600px; */
   text-align: left;
-  color: red;
-  background-color: #200a0a;
+  color: #175aea;
+  /* background-color: #200a0a; */
 `;
 
 const User2 = styled.div`
   /* width: 600px; */
   text-align: right;
-  color: green;
-  background-color: #011a01;
+  color: #ce2d86;
+  /* background-color: #011a01; */
 `;
 
 const SectionToDisplay = styled.div`
@@ -233,7 +232,7 @@ const SectionToDisplay = styled.div`
 const MessageSectionHeader = styled.div`
   background-color: #495057;
   color: white;
-  width:auto;
+  width: auto;
   height: 40px;
   font-size: 18px;
   font-weight: 100;
