@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import GroupsIcon from "@mui/icons-material/Groups";
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+
 interface Props {}
 
 const ChannelSection = () => {
@@ -8,7 +9,9 @@ const ChannelSection = () => {
     <div>
       <ChannelSectionContainer>
         <NewChannel>
-          <GroupsIcon />
+          <IconWrapper>
+            <GroupsOutlinedIcon />
+          </IconWrapper>
           <p>New Channel</p>
         </NewChannel>
         #existent channels here
@@ -32,7 +35,7 @@ const NewChannel = styled.div`
   color: white;
   border: none;
   width: 300px;
-  height: 40px;
+  height: 55px;
   font-weight: 100;
   font-size: 18px;
   text-align: center;
@@ -47,4 +50,21 @@ const NewChannel = styled.div`
   align-items: center;
   padding-left: 20px;
   gap: 10px;
+`;
+
+const IconWrapper = styled.div`
+  color: black;
+  border: black 1px solid;
+  background-color: #e9ecef;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  &:hover {
+    background-color: #333232;
+    cursor: pointer;
+  }
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 `;

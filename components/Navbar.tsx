@@ -9,17 +9,26 @@ interface Props {}
 const Navbar = () => {
   const [onclickToolkitVisibilityStatus, setOnclickToolkitVisibilityStatus] =
     useState("hidden");
+  
+  const [onclickToolkitDisplayStatus, setOnclickToolkitDisplayStatus] =
+    useState("none");
+  
   const settingsButtonHandler = (e: any) => {
     e.preventDefault();
     onclickToolkitVisibilityStatus === "hidden"
       ? setOnclickToolkitVisibilityStatus("visible")
       : setOnclickToolkitVisibilityStatus("hidden");
+    
+    
+      onclickToolkitDisplayStatus === "none"
+      ? setOnclickToolkitDisplayStatus("flex")
+      : setOnclickToolkitDisplayStatus("none");
   };
   return (
     <NavbarContainer>
       <AppLogo>mesazh</AppLogo>
       <Group2>
-        <OnclickToolkit visibilityStatus={onclickToolkitVisibilityStatus}>
+        <OnclickToolkit visibilityStatus={onclickToolkitVisibilityStatus} displayStatus={onclickToolkitDisplayStatus}>
           <ToolkitOption>
             <UserMascott>AniS</UserMascott>
             <mark>Anivar Saurak</mark>
@@ -138,9 +147,9 @@ const IconWrapper = styled.div`
 `;
 
 const OnclickToolkit = styled.div`
-  visibility: ${(props) => props.visibilityStatus};
-  position: relative;
-  margin-top: 180px;
+  /* visibility: ${(props) => props.visibilityStatus}; */
+  margin-top: 220px;
+  margin-right:-20px;
   background-color: #292828;
   padding: 15px;
   border: none;
@@ -150,6 +159,7 @@ const OnclickToolkit = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 20px;
+  display: ${(props) => props.displayStatus};
 `;
 
 const ToolkitOption = styled.div`
@@ -164,8 +174,8 @@ const ToolkitOption = styled.div`
     color:white;
   }
   &:hover mark {
-    background-color:yellow;
+    background-color:transparent;
     cursor:pointer;
-    color:black;
+    color:white;
   }
 `;
