@@ -88,9 +88,15 @@ const Sidebar = () => {
         </MessageSectionHeader>
         <MainMessageContainer>
           <User1>
+            <div
+              style={{ color: "green" }}
+            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </User1>
           <User2>
+            <div
+              style={{ color: "green" }}
+            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
             {`Today  :  ${Date()}`}
             <br></br>
             {`Destination  :  18 November 2070`}
@@ -102,6 +108,12 @@ const Sidebar = () => {
             )}`}
           </User2>
         </MainMessageContainer>
+        <MessageSectionTyper
+          onClick={handleContactButton}
+          bgColor={contactButtonBackgroundColor}
+        >
+          Type here
+        </MessageSectionTyper>
       </SecondHalf>
     </SidebarContainer>
   );
@@ -209,6 +221,9 @@ const MainMessageContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   gap: 10px;
+  height:438px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 const User1 = styled.div`
@@ -230,6 +245,25 @@ const SectionToDisplay = styled.div`
 `;
 
 const MessageSectionHeader = styled.div`
+  background-color: #495057;
+  color: white;
+  width: auto;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 100;
+  text-align: center;
+  padding-top: 20px 0 0 0;
+  &:hover {
+    cursor: pointer;
+  }
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+`;
+
+const MessageSectionTyper = styled.div`
   background-color: #495057;
   color: white;
   width: auto;

@@ -162,7 +162,7 @@ const InitialsWrapper = styled.div`
 
 const ContactName = styled.mark`
   color: black;
-  background-color: #a5aeb5;
+  background-color: transparent;
   width: 150px;
   padding-left: 10px;
 `;
