@@ -60,7 +60,7 @@ const IconWrapper = styled.div`
   width: 40px;
   height: 40px;
   &:hover {
-    /* background-color: #333232; */
+    background-color: #333232;
     cursor: pointer;
   }
   display: flex;
