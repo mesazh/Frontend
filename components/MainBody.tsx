@@ -4,6 +4,9 @@ import ContactSection from "./contactOrChannelSection/ContactSection";
 import ChannelSection from "./contactOrChannelSection/ChannelSection";
 import PeopleSection from "./contactOrChannelSection/PeopleSection";
 import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import AttachmentOutlinedIcon from "@mui/icons-material/AttachmentOutlined";
+import EmojiEmotionsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
 
 interface Props {}
 
@@ -112,7 +115,21 @@ const Sidebar = () => {
           onClick={handleContactButton}
           bgColor={contactButtonBackgroundColor}
         >
-          Type here
+          <FirstDivOfMessageSectionTyper>
+            <GeneralIconWrapper>
+              <EmojiEmotionsOutlinedIcon />
+            </GeneralIconWrapper>
+            <GeneralIconWrapper>
+              <AttachmentOutlinedIcon />
+            </GeneralIconWrapper>
+          </FirstDivOfMessageSectionTyper>
+
+          <SecondDivOfMessageSectionTyper>
+            <input type="text" placeholder="..." />
+            <SendIconWrapper>
+              <KeyboardArrowRightIcon />
+            </SendIconWrapper>
+          </SecondDivOfMessageSectionTyper>
         </MessageSectionTyper>
       </SecondHalf>
     </SidebarContainer>
@@ -221,23 +238,19 @@ const MainMessageContainer = styled.div`
   display: flex;
   flex-flow: column nowrap;
   gap: 10px;
-  height:438px;
+  height: 438px;
   margin-left: 10px;
   margin-right: 10px;
 `;
 
 const User1 = styled.div`
-  /* width: 600px; */
   text-align: left;
   color: #175aea;
-  /* background-color: #200a0a; */
 `;
 
 const User2 = styled.div`
-  /* width: 600px; */
   text-align: right;
   color: #ce2d86;
-  /* background-color: #011a01; */
 `;
 
 const SectionToDisplay = styled.div`
@@ -272,12 +285,73 @@ const MessageSectionTyper = styled.div`
   font-weight: 100;
   text-align: center;
   padding-top: 20px 0 0 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  border-right: 1px solid black;
+`;
+
+const FirstDivOfMessageSectionTyper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap:10px;
+`;
+
+const SecondDivOfMessageSectionTyper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  >input[type=text]{
+  width:450px;
+  border:#e9ecef 1px solid;
+  border-radius:5px;
+  height:25px;
+  background-color:rgb(96, 94, 94);
+  color:#e9ecef;
+  opacity:0.7;
+  text-align:left;
+  padding-left:10px;
+}
+>input[type=text]:focus{
+  outline: none;
+  opacity:1;
+}
+  gap:10px;
+`;
+
+const GeneralIconWrapper = styled.div`
+  color: #CED4DA;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
   &:hover {
     cursor: pointer;
+    padding-bottom:5px;
   }
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid black;
+`;
+
+const SendIconWrapper = styled.div`
+  color: #CED4DA;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  &:hover {
+    cursor: pointer;
+    padding-left:5px;
+  }
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 `;
