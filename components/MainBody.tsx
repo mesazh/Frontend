@@ -4,7 +4,7 @@ import ContactSection from "./contactOrChannelSection/ContactSection";
 import ChannelSection from "./contactOrChannelSection/ChannelSection";
 import PeopleSection from "./contactOrChannelSection/PeopleSection";
 import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import AttachmentOutlinedIcon from "@mui/icons-material/AttachmentOutlined";
 import EmojiEmotionsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
 
@@ -18,6 +18,7 @@ const Sidebar = () => {
     useState("#495057");
   const [peopleButtonBackgroundColor, setPeopleButtonBackgroundColor] =
     useState("#495057");
+  const [mesazhIDDisplayState, setMesazhIDDisplayState] = useState(false);
   const handleContactButton = (e: any) => {
     e.preventDefault();
     console.log("toggled to Contacts");
@@ -46,6 +47,13 @@ const Sidebar = () => {
     setContactButtonBackgroundColor("#495057");
     setChannelButtonBackgroundColor("#495057");
     setPeopleButtonBackgroundColor("#CED4DA");
+  };
+
+  const handleMesazhIDFlipping = (e: any) => {
+    e.preventDefault();
+    mesazhIDDisplayState === false
+      ? setMesazhIDDisplayState(true)
+      : setMesazhIDDisplayState(false);
   };
 
   return (
@@ -83,11 +91,16 @@ const Sidebar = () => {
       </FirstHalf>
 
       <SecondHalf>
-        <MessageSectionHeader
-          onClick={handleContactButton}
-          bgColor={contactButtonBackgroundColor}
-        >
-          Contact / Group Name
+        <MessageSectionHeader>
+          <UsernameContainer
+            mesazhIDDisplayState={mesazhIDDisplayState}
+            onClick={handleMesazhIDFlipping}
+          >
+            Domino Domino
+          </UsernameContainer>
+          <MesazhIDContainer mesazhIDDisplayState={mesazhIDDisplayState}>
+            3345566uiodn
+          </MesazhIDContainer>
         </MessageSectionHeader>
         <MainMessageContainer>
           <User1>
@@ -125,7 +138,7 @@ const Sidebar = () => {
           </FirstDivOfMessageSectionTyper>
 
           <SecondDivOfMessageSectionTyper>
-            <input type="text" placeholder="..." />
+            <input type="text" placeholder="" />
             <SendIconWrapper>
               <KeyboardArrowRightIcon />
             </SendIconWrapper>
@@ -262,18 +275,34 @@ const MessageSectionHeader = styled.div`
   color: white;
   width: auto;
   height: 40px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 100;
   text-align: center;
   padding-top: 20px 0 0 0;
-  &:hover {
-    cursor: pointer;
-  }
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   border-right: 1px solid black;
+`;
+
+const UsernameContainer = styled.section`
+/* border-bottom: 1px solid cyan; */
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const MesazhIDContainer = styled.section`
+  /* border-left: 2px solid yellow;
+  border-right: 2px solid yellow;
+  border-top: 1px solid yellow; */
+  border-bottom: 1px solid yellow;
+  border-radius: 2px;
+  padding: 0 5px 0 5px;
+  display: ${(props) =>
+    props.mesazhIDDisplayState === true ? "block" : "none"};
 `;
 
 const MessageSectionTyper = styled.div`
@@ -298,7 +327,7 @@ const FirstDivOfMessageSectionTyper = styled.div`
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
-  gap:10px;
+  gap: 10px;
 `;
 
 const SecondDivOfMessageSectionTyper = styled.div`
@@ -306,33 +335,33 @@ const SecondDivOfMessageSectionTyper = styled.div`
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
-  >input[type=text]{
-  width:450px;
-  border:#e9ecef 1px solid;
-  border-radius:5px;
-  height:25px;
-  background-color:rgb(96, 94, 94);
-  color:#e9ecef;
-  opacity:0.7;
-  text-align:left;
-  padding-left:10px;
-}
->input[type=text]:focus{
-  outline: none;
-  opacity:1;
-}
-  gap:10px;
+  > input[type="text"] {
+    width: 450px;
+    border: #e9ecef 1px solid;
+    border-radius: 5px;
+    height: 25px;
+    background-color: transparent;
+    color: #e9ecef;
+    opacity: 0.9;
+    text-align: center;
+    padding-left: 10px;
+  }
+  > input[type="text"]:focus {
+    outline: none;
+    opacity: 1;
+  }
+  gap: 10px;
 `;
 
 const GeneralIconWrapper = styled.div`
-  color: #CED4DA;
+  color: #ced4da;
   background-color: transparent;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   &:hover {
     cursor: pointer;
-    padding-bottom:5px;
+    padding-bottom: 5px;
   }
   display: flex;
   flex-flow: row nowrap;
@@ -341,14 +370,14 @@ const GeneralIconWrapper = styled.div`
 `;
 
 const SendIconWrapper = styled.div`
-  color: #CED4DA;
+  color: #ced4da;
   background-color: transparent;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   &:hover {
     cursor: pointer;
-    padding-left:5px;
+    padding-left: 5px;
   }
   display: flex;
   flex-flow: row nowrap;
