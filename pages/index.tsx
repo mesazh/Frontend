@@ -6,19 +6,17 @@ import Navbar from "../components/Navbar";
 import MainBody from "../components/MainBody";
 import styled from "styled-components";
 
-import type { RootState } from '../store';
-import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from '../slices/counterSlice';
+import type { RootState } from "../store";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "../slices/counterSlice";
 
 const Home: NextPage = () => {
-  
-  const count = useSelector((state: RootState) => state.counter.value)
+  const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
   return (
-    <Grouped>
-    <MainBody />
-      <Navbar />
-      <div>
+      <Grouped>
+        <Navbar />
+        {/* <div>
         <button
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
@@ -32,7 +30,8 @@ const Home: NextPage = () => {
         >
           Decrement
         </button>
-        </div>
+        </div>  */}
+        <MainBody />
       </Grouped>
   );
 };
@@ -40,5 +39,6 @@ const Home: NextPage = () => {
 export default Home;
 
 const Grouped = styled.div`
-  /* position:fixed; */
+  /* position: fixed; */
+  /* overflow-y: scroll; */
 `;

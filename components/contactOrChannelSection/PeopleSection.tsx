@@ -1,21 +1,26 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-import PeopleIcon from '@mui/icons-material/People';
+import PeopleIcon from "@mui/icons-material/People";
 
 interface Props {}
 
 const PeopleSection = () => {
-    return <div>
-    <PeopleSectionContainer>
-    {/* <NewPeople>
-      <PeopleIcon />
-    </NewPeople> */}
-    #regular users here
-  </PeopleSectionContainer>
-</div>
-}
+  return (
+    <div>
+      <PeopleSectionContainer>
+        <NewPeople>
+          <IconWrapper>
+            <PeopleIcon />
+          </IconWrapper>
+          <p>New People</p>
+        </NewPeople>
+        #regular users here
+      </PeopleSectionContainer>
+    </div>
+  );
+};
 
-export default PeopleSection
+export default PeopleSection;
 
 const PeopleSectionContainer = styled.div`
   color: black;
@@ -26,23 +31,38 @@ const PeopleSectionContainer = styled.div`
 `;
 
 const NewPeople = styled.div`
-background-color: black;
-color:white;
+  background-color: black;
+  color: white;
   border: none;
-  width: 300px;
-  height: 40px;
+  width: 24vw;
+  height: 8vh;
   font-weight: 100;
   font-size: 18px;
   text-align: center;
   padding-top: 20px 0 0 0;
   &:hover {
-    background-color: #333232;
     cursor: pointer;
   }
-  display:flex;
-  flex-flow:row nowrap;
-  justify-content:center;
-  align-items:center;
-  padding-left:20px;
-  gap:10px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+  gap: 10px;
+`;
+
+const IconWrapper = styled.div`
+  color: black;
+  border: black 1px solid;
+  background-color: #e9ecef;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  &:hover {
+    cursor: pointer;
+  }
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 `;

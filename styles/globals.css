@@ -12,6 +12,8 @@ a {
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -21,6 +23,25 @@ a {
   }
   body {
     color: white;
-    background:  #CED4DA;
+    background:  white;
   }
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:  red;  
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: green; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: yellow; 
 }

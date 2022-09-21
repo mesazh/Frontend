@@ -57,7 +57,7 @@ const Sidebar = () => {
   };
 
   return (
-    <SidebarContainer>
+    <MainBodyContainer>
       <FirstHalf>
         <ContactOrChannelButtons>
           <ContactButton
@@ -123,6 +123,66 @@ const Sidebar = () => {
                 (1000 * 60 * 60 * 24)
             )}`}
           </User2>
+          <User1>
+            <div
+              style={{ color: "green" }}
+            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </User1>
+          <User2>
+            <div
+              style={{ color: "green" }}
+            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            {`Today  :  ${Date()}`}
+            <br></br>
+            {`Destination  :  18 November 2070`}
+            <br></br>
+            {`Days left  :  ${Math.trunc(
+              (new Date("November 18, 2070 23:15:30").getTime() -
+                new Date().getTime()) /
+                (1000 * 60 * 60 * 24)
+            )}`}
+          </User2>
+          <User1>
+            <div
+              style={{ color: "green" }}
+            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </User1>
+          <User2>
+            <div
+              style={{ color: "green" }}
+            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            {`Today  :  ${Date()}`}
+            <br></br>
+            {`Destination  :  18 November 2070`}
+            <br></br>
+            {`Days left  :  ${Math.trunc(
+              (new Date("November 18, 2070 23:15:30").getTime() -
+                new Date().getTime()) /
+                (1000 * 60 * 60 * 24)
+            )}`}
+          </User2>
+          <User1>
+            <div
+              style={{ color: "green" }}
+            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </User1>
+          <User2>
+            <div
+              style={{ color: "green" }}
+            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            {`Today  :  ${Date()}`}
+            <br></br>
+            {`Destination  :  18 November 2070`}
+            <br></br>
+            {`Days left  :  ${Math.trunc(
+              (new Date("November 18, 2070 23:15:30").getTime() -
+                new Date().getTime()) /
+                (1000 * 60 * 60 * 24)
+            )}`}
+          </User2>
         </MainMessageContainer>
         <MessageSectionTyper
           onClick={handleContactButton}
@@ -145,43 +205,40 @@ const Sidebar = () => {
           </SecondDivOfMessageSectionTyper>
         </MessageSectionTyper>
       </SecondHalf>
-    </SidebarContainer>
+    </MainBodyContainer>
   );
 };
 
 export default Sidebar;
 
-const SidebarContainer = styled.div`
+const MainBodyContainer = styled.div`
   width: 100vw;
+  height: 90vh;
   background-color: transparent;
-  padding-top: 60px;
-  height: 100vh;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: flex-start;
-  border-right: 1px solid black;
-  position: fixed;
+  z-index:-1;
+  position:fixed;
 `;
 
 const ContactOrChannelButtons = styled.div`
-  border-top: none;
   text-align: center;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 `;
 
 const ContactButton = styled.div`
   background-color: ${(props) => props.bgColor};
   color: ${(props) => (props.bgColor === "#495057" ? "white" : "black")};
-  width: 100px;
-  height: 40px;
+  width: 8vw;
+  height: 7vh;
   font-size: 18px;
   font-weight: 100;
   text-align: center;
-  padding-top: 20px 0 0 0;
   &:hover {
     cursor: pointer;
   }
@@ -195,12 +252,11 @@ const ContactButton = styled.div`
 const PeopleButton = styled.div`
   background-color: ${(props) => props.bgColor};
   color: ${(props) => (props.bgColor === "#495057" ? "white" : "black")};
-  width: 100px;
-  height: 40px;
+  width: 8vw;
+  height: 7vh;
   font-weight: 100;
   font-size: 18px;
   text-align: center;
-  padding-top: 20px 0 0 0;
   &:hover {
     cursor: pointer;
   }
@@ -214,12 +270,11 @@ const PeopleButton = styled.div`
 const ChannelButton = styled.div`
   background-color: ${(props) => props.bgColor};
   color: ${(props) => (props.bgColor === "#495057" ? "white" : "black")};
-  width: 100px;
-  height: 40px;
+  width: 8vw;
+  height: 7vh;
   font-weight: 100;
   font-size: 18px;
   text-align: center;
-  padding-top: 20px 0 0 0;
   &:hover {
     cursor: pointer;
   }
@@ -235,25 +290,27 @@ const FirstHalf = styled.div`
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
-  border-right: 1px solid black;
+  background-color: white;
+  /* height: 1000px; */
+  width: 24vw;
 `;
 
 const SecondHalf = styled.div`
-  border-left: 1px solid black;
   display: flex;
   flex-flow: column nowrap;
   gap: 5px;
-  height: 1000px;
-  width: 980px;
+  width: 76vw;
+  /* height: 438px; */
 `;
 
 const MainMessageContainer = styled.div`
+height:74.3vh;
   display: flex;
   flex-flow: column nowrap;
   gap: 10px;
-  height: 438px;
   margin-left: 10px;
   margin-right: 10px;
+  overflow: auto;
 `;
 
 const User1 = styled.div`
@@ -267,37 +324,46 @@ const User2 = styled.div`
 `;
 
 const SectionToDisplay = styled.div`
-  position: relative;
+  height: 83vh;
+  overflow-y: scroll;
 `;
 
 const MessageSectionHeader = styled.div`
   background-color: #495057;
   color: white;
-  width: auto;
-  height: 40px;
-  font-size: 15px;
+  /* width: auto; */
+  height: 7vh;
+  font-size: 18px;
   font-weight: 100;
   text-align: center;
-  padding-top: 20px 0 0 0;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   gap: 20px;
   border-right: 1px solid black;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const UsernameContainer = styled.section`
-/* border-bottom: 1px solid cyan; */
+  color: white;
+  width: auto;
+  font-size: 18px;
+  font-weight: 100;
+  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
   &:hover {
     cursor: pointer;
   }
 `;
 
 const MesazhIDContainer = styled.section`
-  /* border-left: 2px solid yellow;
-  border-right: 2px solid yellow;
-  border-top: 1px solid yellow; */
   border-bottom: 1px solid yellow;
   border-radius: 2px;
   padding: 0 5px 0 5px;
@@ -308,8 +374,8 @@ const MesazhIDContainer = styled.section`
 const MessageSectionTyper = styled.div`
   background-color: #495057;
   color: white;
-  width: auto;
-  height: 40px;
+  /* width: auto; */
+  height: 7vh;
   font-size: 18px;
   font-weight: 100;
   text-align: center;
@@ -336,7 +402,7 @@ const SecondDivOfMessageSectionTyper = styled.div`
   justify-content: space-around;
   align-items: center;
   > input[type="text"] {
-    width: 450px;
+    width: 40vw;
     border: #e9ecef 1px solid;
     border-radius: 5px;
     height: 25px;

@@ -9,18 +9,17 @@ interface Props {}
 const Navbar = () => {
   const [onclickToolkitVisibilityStatus, setOnclickToolkitVisibilityStatus] =
     useState("hidden");
-  
+
   const [onclickToolkitDisplayStatus, setOnclickToolkitDisplayStatus] =
     useState("none");
-  
+
   const settingsButtonHandler = (e: any) => {
     e.preventDefault();
     onclickToolkitVisibilityStatus === "hidden"
       ? setOnclickToolkitVisibilityStatus("visible")
       : setOnclickToolkitVisibilityStatus("hidden");
-    
-    
-      onclickToolkitDisplayStatus === "none"
+
+    onclickToolkitDisplayStatus === "none"
       ? setOnclickToolkitDisplayStatus("flex")
       : setOnclickToolkitDisplayStatus("none");
   };
@@ -28,7 +27,10 @@ const Navbar = () => {
     <NavbarContainer>
       <AppLogo>mesazh</AppLogo>
       <Group2>
-        <OnclickToolkit visibilityStatus={onclickToolkitVisibilityStatus} displayStatus={onclickToolkitDisplayStatus}>
+        <OnclickToolkit
+          visibilityStatus={onclickToolkitVisibilityStatus}
+          displayStatus={onclickToolkitDisplayStatus}
+        >
           <ToolkitOption>
             <UserMascott>AniS</UserMascott>
             <mark>Anivar Saurak</mark>
@@ -60,14 +62,14 @@ const NavbarContainer = styled.div`
   background-color: black;
   width: 100%;
   padding: 0;
-  position: fixed;
   margin-top: 0;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   color: white;
-  height: 60px;
+  height: 10vh;
+  z-index:1;
 `;
 
 const AppLogo = styled.p`
@@ -87,17 +89,6 @@ const Group2 = styled.div`
   padding-right: 20px;
 `;
 
-const SignOutButton = styled.span`
-  border: none;
-  background-color: #292828;
-  border-radius: 6px;
-  padding: 5px 10px 5px 10px;
-  &:hover {
-    background-color: #333232;
-    cursor: pointer;
-  }
-`;
-
 const UserMascott = styled.div`
   border: black 1px solid;
   background-color: #292828;
@@ -115,13 +106,10 @@ const UserMascott = styled.div`
 `;
 
 const SettingsNavIcon = styled.div`
-  border: black 1px solid;
-  background-color: #292828;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   &:hover {
-    background-color: #333232;
     cursor: pointer;
   }
   display: flex;
@@ -147,9 +135,10 @@ const IconWrapper = styled.div`
 `;
 
 const OnclickToolkit = styled.div`
-  /* visibility: ${(props) => props.visibilityStatus}; */
+  /* visibility: ${(props) =>
+    props.visibilityStatus == "flex" ? "visible" : "hidden"}; */
   margin-top: 220px;
-  margin-right:-20px;
+  margin-right: -20px;
   background-color: #292828;
   padding: 15px;
   border: none;
@@ -169,13 +158,14 @@ const ToolkitOption = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  mark{
-    background-color:transparent;
-    color:white;
+  mark {
+    background-color: transparent;
+    color: white;
   }
   &:hover mark {
-    background-color:transparent;
-    cursor:pointer;
-    color:white;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
   }
+  z-index:1;
 `;

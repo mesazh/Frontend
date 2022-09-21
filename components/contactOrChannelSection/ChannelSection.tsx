@@ -34,14 +34,13 @@ const NewChannel = styled.div`
   background-color: black;
   color: white;
   border: none;
-  width: 300px;
-  height: 55px;
+  width: 24vw;
+  height: 8vh;
   font-weight: 100;
   font-size: 18px;
   text-align: center;
   padding-top: 20px 0 0 0;
   &:hover {
-    background-color: #333232;
     cursor: pointer;
   }
   display: flex;
@@ -60,7 +59,6 @@ const IconWrapper = styled.div`
   width: 40px;
   height: 40px;
   &:hover {
-    background-color: #333232;
     cursor: pointer;
   }
   display: flex;

@@ -81,21 +81,18 @@ const ContactSectionContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  position:relative;
 `;
 
 const NewContactButton = styled.div`
   background-color: black;
   color: white;
   border: none;
-  width: 300px;
-  height: 55px;
+  width: 24vw;
+  height: 8vh;
   font-weight: 100;
   font-size: 18px;
   text-align: center;
-  padding-top: 20px 0 0 0;
   &:hover {
-    background-color: #333232;
     cursor: pointer;
   }
   display: flex;
@@ -114,7 +111,6 @@ const IconWrapper = styled.div`
   width: 40px;
   height: 40px;
   &:hover {
-    /* background-color: #333232; */
     cursor: pointer;
   }
   display: flex;
@@ -124,14 +120,13 @@ const IconWrapper = styled.div`
 `;
 
 const ContactsListRendered = styled.div`
-  /* position:relative; */
 `;
 
 const EachUser = styled.div`
-  border-bottom: black solid 1px;
+  border-top: black solid 1px;
   background-color: ${(props) => props.eachUserBackgroundColor};
-  height: 55px;
-  width: 300px;
+  height: 8vh;
+  width: 24vw;
   padding-left: 20px;
   gap: 10px;
   display: flex;
@@ -150,10 +145,6 @@ const InitialsWrapper = styled.div`
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  /* &:hover {
-    background-color: #333232;
-    cursor: pointer;
-  } */
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -161,7 +152,7 @@ const InitialsWrapper = styled.div`
 `;
 
 const ContactName = styled.mark`
-  color: black;
+  color: white;
   background-color: transparent;
   width: 150px;
   padding-left: 10px;
@@ -173,7 +164,6 @@ const OnlineStatusAndNotificationsGroup = styled.div`
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  /* gap:10px; */
 `;
 
 const OnlineStatus = styled.div`
@@ -189,10 +179,6 @@ const NotificationsCount = styled.div`
   width: 18px;
   height: 18px;
   font-size: 10px;
-  /* &:hover {
-    background-color: #333232;
-    cursor: pointer;
-  } */
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
