@@ -35,17 +35,25 @@ const Navbar = () => {
             <UserMascott>AniS</UserMascott>
             <mark>Anivar Saurak</mark>
           </ToolkitOption>
+          <hr></hr>
           <ToolkitOption>
-            <IconWrapper>
-              <ExitToAppIcon />
-            </IconWrapper>
-            <mark>Sign Out</mark>
+            {/* <IconWrapper>
+              <ColorLensOutlinedIcon />
+            </IconWrapper> */}
+            <mark>Theme</mark>
+          </ToolkitOption>
+          <hr></hr>
+          <ToolkitOption>
+            {/* <IconWrapper>
+              <ColorLensOutlinedIcon />
+            </IconWrapper> */}
+            <mark>Help</mark>
           </ToolkitOption>
           <ToolkitOption>
-            <IconWrapper>
-              <ColorLensOutlinedIcon />
-            </IconWrapper>
-            <mark>Theme</mark>
+            {/* <IconWrapper>
+              <ExitToAppIcon />
+            </IconWrapper> */}
+            <mark>Sign Out</mark>
           </ToolkitOption>
         </OnclickToolkit>
         <SettingsNavIcon onClick={settingsButtonHandler}>
@@ -59,7 +67,7 @@ const Navbar = () => {
 export default Navbar;
 
 const NavbarContainer = styled.div`
-  background-color: black;
+  background-color: #0e0e0e;
   width: 100%;
   padding: 0;
   margin-top: 0;
@@ -69,7 +77,9 @@ const NavbarContainer = styled.div`
   align-items: center;
   color: white;
   height: 10vh;
+  min-height:50px;
   z-index:1;
+  position:fixed;
 `;
 
 const AppLogo = styled.p`
@@ -90,13 +100,14 @@ const Group2 = styled.div`
 `;
 
 const UserMascott = styled.div`
-  border: black 1px solid;
-  background-color: #292828;
+  /* border: white 1px solid; */
+  color:#0e0e0e;
+  background-color: #c9dee6;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   &:hover {
-    background-color: #333232;
+    /* background-color: #333232; */
     cursor: pointer;
   }
   display: flex;
@@ -119,53 +130,64 @@ const SettingsNavIcon = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  border: black 1px solid;
-  background-color: #292828;
+  background-color: #091317;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   &:hover {
-    background-color: #333232;
+    /* background-color: #333232; */
     cursor: pointer;
   }
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  > .MuiSvgIcon-root {
+    font-size:20px;
+  }
 `;
 
 const OnclickToolkit = styled.div`
   /* visibility: ${(props) =>
     props.visibilityStatus == "flex" ? "visible" : "hidden"}; */
-  margin-top: 220px;
-  margin-right: -20px;
-  background-color: #292828;
+  margin-top: 150px;
+  margin-right: -10px;
+  background-color: #091317;
   padding: 15px;
   border: none;
   border-radius: 5px;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   display: ${(props) => props.displayStatus};
+  font-size:14px;
+  >hr{
+    width:100%;
+  }
 `;
 
 const ToolkitOption = styled.div`
+z-index:1;
   /* margin-left:10px; */
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-start;
+  justify-content:space-between;
   align-items: center;
   gap: 10px;
   mark {
     background-color: transparent;
     color: white;
+    padding:2px 10px 2px 10px;
+    border-radius:5px;
   }
   &:hover mark {
-    background-color: transparent;
+    background-color: #142932;
     cursor: pointer;
     color: white;
+    padding:2px 10px 2px 10px;
+    border-radius:5px;
+
   }
-  z-index:1;
 `;
