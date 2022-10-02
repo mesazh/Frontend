@@ -36,6 +36,7 @@ const NewChannel = styled.div`
   border: none;
   width: 24vw;
   height: 8vh;
+  min-height:50px;
   font-weight: 100;
   font-size: 18px;
   text-align: center;

@@ -1,53 +1,29 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import ContactSection from "./contactOrChannelSection/ContactSection";
-import ChannelSection from "./contactOrChannelSection/ChannelSection";
-import PeopleSection from "./contactOrChannelSection/PeopleSection";
-import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import AttachmentOutlinedIcon from "@mui/icons-material/AttachmentOutlined";
 import EmojiEmotionsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
 
+// importing the two types of sidebars
+import StretchedSidebar from "./StretchedSidebar";
+import AlternateSidebar from "./AlternateSidebar";
+
+// importing the global state of redux toolkit from redux store
+import type { RootState } from "../store";
+
+// importing hooks to work directly on the global states
+import { useSelector } from "react-redux";
+
 interface Props {}
 
-const Sidebar = () => {
-  const [sectionToDisplay, setSectionToDisplay] = useState("Contacts");
-  const [contactButtonBackgroundColor, setContactButtonBackgroundColor] =
-    useState("#CED4DA");
-  const [channelButtonBackgroundColor, setChannelButtonBackgroundColor] =
-    useState("#495057");
-  const [peopleButtonBackgroundColor, setPeopleButtonBackgroundColor] =
-    useState("#495057");
+const MainBody = () => {
+
+  const userID = useSelector((state: RootState) => state.userId.value);
+  const userName = useSelector((state: RootState) => state.userName.value);
+
+  const size = useWindowSize();
   const [mesazhIDDisplayState, setMesazhIDDisplayState] = useState(false);
-  const handleContactButton = (e: any) => {
-    e.preventDefault();
-    console.log("toggled to Contacts");
-    setSectionToDisplay("Contacts");
-    console.log("sectionToDisplay : ", sectionToDisplay);
-    setContactButtonBackgroundColor("#CED4DA");
-    setChannelButtonBackgroundColor("#495057");
-    setPeopleButtonBackgroundColor("#495057");
-  };
-
-  const handleChannelButton = (e: any) => {
-    e.preventDefault();
-    console.log("toggled to Channel");
-    setSectionToDisplay("Channels");
-    console.log("sectionToDisplay : ", sectionToDisplay);
-    setContactButtonBackgroundColor("#495057");
-    setChannelButtonBackgroundColor("#CED4DA");
-    setPeopleButtonBackgroundColor("#495057");
-  };
-
-  const handlePeopleButton = (e: any) => {
-    e.preventDefault();
-    console.log("toggled to People");
-    setSectionToDisplay("People");
-    console.log("sectionToDisplay : ", sectionToDisplay);
-    setContactButtonBackgroundColor("#495057");
-    setChannelButtonBackgroundColor("#495057");
-    setPeopleButtonBackgroundColor("#CED4DA");
-  };
+  console.log(`${size}`);
 
   const handleMesazhIDFlipping = (e: any) => {
     e.preventDefault();
@@ -56,39 +32,15 @@ const Sidebar = () => {
       : setMesazhIDDisplayState(false);
   };
 
+  if (size == undefined) {
+    return;
+  }
+
   return (
     <MainBodyContainer>
-      <FirstHalf>
-        <ContactOrChannelButtons>
-          <ContactButton
-            onClick={handleContactButton}
-            bgColor={contactButtonBackgroundColor}
-          >
-            Contacts
-          </ContactButton>
-          <ChannelButton
-            onClick={handleChannelButton}
-            bgColor={channelButtonBackgroundColor}
-          >
-            Channels
-          </ChannelButton>
-          <PeopleButton
-            onClick={handlePeopleButton}
-            bgColor={peopleButtonBackgroundColor}
-          >
-            People
-          </PeopleButton>
-        </ContactOrChannelButtons>
-        <SectionToDisplay>
-          {sectionToDisplay === "Contacts" ? (
-            <ContactSection />
-          ) : sectionToDisplay === "People" ? (
-            <PeopleSection />
-          ) : (
-            <ChannelSection />
-          )}
-        </SectionToDisplay>
-      </FirstHalf>
+      <SidebarComponent>
+        {size.width < 1200 ? <AlternateSidebar /> : <StretchedSidebar />}
+      </SidebarComponent>
 
       <SecondHalf>
         <MessageSectionHeader>
@@ -96,23 +48,23 @@ const Sidebar = () => {
             mesazhIDDisplayState={mesazhIDDisplayState}
             onClick={handleMesazhIDFlipping}
           >
-            Domino Domino
+            {userName}
           </UsernameContainer>
           <MesazhIDContainer mesazhIDDisplayState={mesazhIDDisplayState}>
-            3345566uiodn
+            {userID}
           </MesazhIDContainer>
         </MessageSectionHeader>
         <MainMessageContainer>
           <User1>
-            <div
-              style={{ color: "green" }}
-            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </User1>
           <User2>
-            <div
-              style={{ color: "green" }}
-            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
             {`Today  :  ${Date()}`}
             <br></br>
             {`Destination  :  18 November 2070`}
@@ -124,15 +76,15 @@ const Sidebar = () => {
             )}`}
           </User2>
           <User1>
-            <div
-              style={{ color: "green" }}
-            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </User1>
           <User2>
-            <div
-              style={{ color: "green" }}
-            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
             {`Today  :  ${Date()}`}
             <br></br>
             {`Destination  :  18 November 2070`}
@@ -144,15 +96,15 @@ const Sidebar = () => {
             )}`}
           </User2>
           <User1>
-            <div
-              style={{ color: "green" }}
-            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </User1>
           <User2>
-            <div
-              style={{ color: "green" }}
-            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
             {`Today  :  ${Date()}`}
             <br></br>
             {`Destination  :  18 November 2070`}
@@ -164,15 +116,41 @@ const Sidebar = () => {
             )}`}
           </User2>
           <User1>
-            <div
-              style={{ color: "green" }}
-            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </User1>
+          <User1>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </User1>
           <User2>
-            <div
-              style={{ color: "green" }}
-            >{`${new Date().getHours()}:${new Date().getMinutes()}`}</div>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
+            {`Today  :  ${Date()}`}
+            <br></br>
+            {`Destination  :  18 November 2070`}
+            <br></br>
+            {`Days left  :  ${Math.trunc(
+              (new Date("November 18, 2070 23:15:30").getTime() -
+                new Date().getTime()) /
+                (1000 * 60 * 60 * 24)
+            )}`}
+          </User2>
+          <User1>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </User1>
+          <User2>
+            <div style={{ color: "skyBlue" }}>
+              <mark>{`${new Date().getHours()}:${new Date().getMinutes()}`}</mark>
+            </div>
             {`Today  :  ${Date()}`}
             <br></br>
             {`Destination  :  18 November 2070`}
@@ -184,10 +162,7 @@ const Sidebar = () => {
             )}`}
           </User2>
         </MainMessageContainer>
-        <MessageSectionTyper
-          onClick={handleContactButton}
-          bgColor={contactButtonBackgroundColor}
-        >
+        <MessageSectionTyper>
           <FirstDivOfMessageSectionTyper>
             <GeneralIconWrapper>
               <EmojiEmotionsOutlinedIcon />
@@ -209,9 +184,46 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+// interface for a window's size
+interface WindowSize {
+  width: number;
+  height: number;
+}
+
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState<WindowSize>();
+
+  useEffect(() => {
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    // only execute all the code below in client side
+    if (typeof window !== "undefined") {
+      // Handler to call on window resize
+
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+
+      // Call handler right away so state gets updated with initial window size
+      handleResize();
+
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+  return windowSize;
+}
+
+export default MainBody;
 
 const MainBodyContainer = styled.div`
+  margin-top: 60px;
   width: 100vw;
   height: 90vh;
   background-color: transparent;
@@ -219,80 +231,16 @@ const MainBodyContainer = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: flex-start;
-  z-index:-1;
-  position:fixed;
+  z-index: -1;
+  position: fixed;
 `;
 
-const ContactOrChannelButtons = styled.div`
-  text-align: center;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const ContactButton = styled.div`
-  background-color: ${(props) => props.bgColor};
-  color: ${(props) => (props.bgColor === "#495057" ? "white" : "black")};
-  width: 8vw;
-  height: 7vh;
-  font-size: 18px;
-  font-weight: 100;
-  text-align: center;
-  &:hover {
-    cursor: pointer;
-  }
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  border-right: 1px solid black;
-`;
-
-const PeopleButton = styled.div`
-  background-color: ${(props) => props.bgColor};
-  color: ${(props) => (props.bgColor === "#495057" ? "white" : "black")};
-  width: 8vw;
-  height: 7vh;
-  font-weight: 100;
-  font-size: 18px;
-  text-align: center;
-  &:hover {
-    cursor: pointer;
-  }
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  border-right: 1px solid black;
-`;
-
-const ChannelButton = styled.div`
-  background-color: ${(props) => props.bgColor};
-  color: ${(props) => (props.bgColor === "#495057" ? "white" : "black")};
-  width: 8vw;
-  height: 7vh;
-  font-weight: 100;
-  font-size: 18px;
-  text-align: center;
-  &:hover {
-    cursor: pointer;
-  }
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  border-right: 1px solid black;
-`;
-
-const FirstHalf = styled.div`
+const SidebarComponent = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  /* height: 1000px; */
-  width: 24vw;
 `;
 
 const SecondHalf = styled.div`
@@ -300,14 +248,20 @@ const SecondHalf = styled.div`
   flex-flow: column nowrap;
   gap: 5px;
   width: 76vw;
-  /* height: 438px; */
+  @media only screen and (max-width: 1200px) {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+    width: 100vw;
+  }
 `;
 
 const MainMessageContainer = styled.div`
-height:74.3vh;
+  height: 74.3vh;
   display: flex;
   flex-flow: column nowrap;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 20px;
   margin-left: 10px;
   margin-right: 10px;
   overflow: auto;
@@ -315,12 +269,24 @@ height:74.3vh;
 
 const User1 = styled.div`
   text-align: left;
-  color: #175aea;
+  color: skyBlue;
+  font-size: 13px;
+  font-family: monospace;
+  > div > mark {
+    background-color: #ffffb3;
+    padding: 0 2px 0 2px;
+  }
 `;
 
 const User2 = styled.div`
   text-align: right;
-  color: #ce2d86;
+  color: skyBlue;
+  font-size: 13px;
+  font-family: monospace;
+  > div > mark {
+    background-color: #ffffb3;
+    padding: 0 2px 0 2px;
+  }
 `;
 
 const SectionToDisplay = styled.div`
@@ -329,10 +295,10 @@ const SectionToDisplay = styled.div`
 `;
 
 const MessageSectionHeader = styled.div`
-  background-color: #495057;
+  background-color: #272a2b;
   color: white;
-  /* width: auto; */
   height: 7vh;
+  min-height: 40px;
   font-size: 18px;
   font-weight: 100;
   text-align: center;
@@ -372,10 +338,10 @@ const MesazhIDContainer = styled.section`
 `;
 
 const MessageSectionTyper = styled.div`
-  background-color: #495057;
+  background-color: #272a2b;
   color: white;
-  /* width: auto; */
   height: 7vh;
+  min-height: 40px;
   font-size: 18px;
   font-weight: 100;
   text-align: center;

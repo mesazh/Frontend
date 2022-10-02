@@ -89,6 +89,7 @@ const NewContactButton = styled.div`
   border: none;
   width: 24vw;
   height: 8vh;
+  min-height:50px;
   font-weight: 100;
   font-size: 18px;
   text-align: center;
@@ -126,6 +127,7 @@ const EachUser = styled.div`
   border-top: black solid 1px;
   background-color: ${(props) => props.eachUserBackgroundColor};
   height: 8vh;
+  min-height:50px;
   width: 24vw;
   padding-left: 20px;
   gap: 10px;
@@ -137,6 +139,10 @@ const EachUser = styled.div`
     cursor: pointer;
     background-color: #495057;
   }
+  
+@media only screen and (max-width: 1000px) {
+
+}
 `;
 
 const InitialsWrapper = styled.div`

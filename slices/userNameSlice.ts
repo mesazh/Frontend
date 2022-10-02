@@ -9,16 +9,16 @@ const initialState: UserState = {
   value: "",
 }
 
-export const userSlice = createSlice({
-  name: 'user',
+export const userNameSlice = createSlice({
+  name: 'userName',
     initialState,
   reducers: {
-    setMesazhIDForTheUserBeingViewed: (state, action: PayloadAction<string>) => {
+    setNameForTheUserBeingViewed: (state, action: PayloadAction<string>) => {
       state.value = action.payload
     },
   },
 })
 
-export const {setMesazhIDForTheUserBeingViewed} = userSlice.actions
+export const {setNameForTheUserBeingViewed} = userNameSlice.actions
 
-export default userSlice.reducer
+export default userNameSlice.reducer
