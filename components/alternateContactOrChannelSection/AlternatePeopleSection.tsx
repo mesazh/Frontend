@@ -10,6 +10,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setMesazhIDForTheUserBeingViewed } from "../../slices/userIdSlice";
 import { setNameForTheUserBeingViewed } from "../../slices/userNameSlice";
 
+type eachPersonClickedOrNotType = {
+  clickedOrNot: boolean
+}
+
+type eachPersonOnlineStatusType = {
+  onlineStatus: boolean
+}
+
 interface Props {}
 
 const PeopleSection = () => {
@@ -26,7 +34,7 @@ const dispatch = useDispatch();
     {
       initials: "TP",
       name: "Tenz Pak",
-      online: "true",
+      online: true,
       notifications: 2,
       clicked: false,
       userId:"etgheu67"
@@ -34,7 +42,7 @@ const dispatch = useDispatch();
     {
       initials: "R",
       name: "Roger",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu69"
@@ -42,7 +50,7 @@ const dispatch = useDispatch();
     {
       initials: "SD",
       name: "Sauran Deli",
-      online: "true",
+      online: true,
       notifications: 0,
       clicked: false,
       userId:"etgheu72"
@@ -50,7 +58,7 @@ const dispatch = useDispatch();
     {
       initials: "TP",
       name: "Tanya P",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu75"
@@ -58,7 +66,7 @@ const dispatch = useDispatch();
     {
       initials: "DM",
       name: "Dan Marroni",
-      online: "false",
+      online: false,
       notifications: 10,
       clicked: false,
       userId:"etgheu79"
@@ -66,7 +74,7 @@ const dispatch = useDispatch();
     {
       initials: "Z",
       name: "Zeus",
-      online: "true",
+      online: true,
       notifications: 9,
       clicked: false,
       userId:"etgheu82"
@@ -74,7 +82,7 @@ const dispatch = useDispatch();
     {
       initials: "CX",
       name: "Cape Xavier",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu89"
@@ -82,7 +90,7 @@ const dispatch = useDispatch();
     {
       initials: "DD",
       name: "Domino Domino",
-      online: "false",
+      online: false,
       notifications: 4,
       clicked: false,
       userId:"etgheu92"
@@ -90,7 +98,7 @@ const dispatch = useDispatch();
     {
       initials: "TW",
       name: "Tape Worm",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu95"
@@ -98,7 +106,7 @@ const dispatch = useDispatch();
     {
       initials: "YW",
       name: "Yellow World",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu97"
@@ -106,7 +114,7 @@ const dispatch = useDispatch();
     {
       initials: "KT",
       name: "K T",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu99"
@@ -153,15 +161,13 @@ const dispatch = useDispatch();
           return (
             <AlternateSidebar key={val.userId}>
               <EachPersonInitials
+                clickedOrNot={val.clicked}
                 onClick={(event) => handleOnePersonClicked(event, index)}
-                eachPersonBackgroundColor={val.clicked}
               >
                 <InitialsWrapper>{val.initials}</InitialsWrapper>
               </EachPersonInitials>
               <EachPersonLongHover
                 className="showOnLongHover"
-                onClick={handleOnePersonClicked}
-                eachPersonBackgroundColor={eachPersonBackgroundColor}
               >
                 <PersonName>{val.name}</PersonName>
                 <OnlineStatusAndNotificationsGroup>
@@ -234,7 +240,7 @@ const PeopleListRendered = styled.div``;
 
 const EachPersonLongHover = styled.div`
   border-top: black solid 1px;
-  background-color: ${(props) => props.eachPersonBackgroundColor};
+  background-color: #393d3e;
   height: 50px;
   width: 200px;
   /* margin-left: 251px; */
@@ -254,8 +260,8 @@ const EachPersonLongHover = styled.div`
 
 const EachPersonInitials = styled.div`
   border-top: black solid 1px;
-  background-color: ${(props) =>
-    props.eachPersonBackgroundColor == true ? "#393d3e" : "#272a2b"};
+  background-color: ${(props:eachPersonClickedOrNotType) =>
+  props.clickedOrNot == true ? "#393d3e" : "#272a2b"};
   height: 50px;
   width: 50px;
   gap: 10px;
@@ -308,8 +314,8 @@ const OnlineStatusAndNotificationsGroup = styled.div`
 `;
 
 const OnlineStatus = styled.div`
-  color: ${(props) =>
-    props.onlineStatus === "true" ? "yellow" : "transparent"};
+color: ${(props:eachPersonOnlineStatusType) =>
+  props.onlineStatus === true ? "yellow" : "transparent"};
 `;
 
 const NotificationsCount = styled.div`

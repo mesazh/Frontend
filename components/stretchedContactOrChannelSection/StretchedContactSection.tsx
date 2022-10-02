@@ -10,6 +10,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setMesazhIDForTheUserBeingViewed } from "../../slices/userIdSlice";
 import { setNameForTheUserBeingViewed } from "../../slices/userNameSlice";
 
+type eachContactClickedOrNotType = {
+  clickedOrNot: boolean
+}
+
+type eachContactOnlineStatusType = {
+  onlineStatus: boolean
+}
+
 interface Props {}
 
 const StretchedContactSection = () => {
@@ -27,7 +35,7 @@ const StretchedContactSection = () => {
     {
       initials: "TP",
       name: "Tenz Pak",
-      online: "true",
+      online: true,
       notifications: 2,
       clicked: false,
       userId:"etgheu67"
@@ -35,7 +43,7 @@ const StretchedContactSection = () => {
     {
       initials: "R",
       name: "Roger",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu69"
@@ -43,7 +51,7 @@ const StretchedContactSection = () => {
     {
       initials: "SD",
       name: "Sauran Deli",
-      online: "true",
+      online: true,
       notifications: 0,
       clicked: false,
       userId:"etgheu72"
@@ -51,7 +59,7 @@ const StretchedContactSection = () => {
     {
       initials: "TP",
       name: "Tanya P",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu75"
@@ -59,7 +67,7 @@ const StretchedContactSection = () => {
     {
       initials: "DM",
       name: "Dan Marroni",
-      online: "false",
+      online: false,
       notifications: 10,
       clicked: false,
       userId:"etgheu79"
@@ -67,7 +75,7 @@ const StretchedContactSection = () => {
     {
       initials: "Z",
       name: "Zeus",
-      online: "true",
+      online: true,
       notifications: 9,
       clicked: false,
       userId:"etgheu82"
@@ -75,7 +83,7 @@ const StretchedContactSection = () => {
     {
       initials: "CX",
       name: "Cape Xavier",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu89"
@@ -83,7 +91,7 @@ const StretchedContactSection = () => {
     {
       initials: "DD",
       name: "Domino Domino",
-      online: "false",
+      online: false,
       notifications: 4,
       clicked: false,
       userId:"etgheu92"
@@ -91,7 +99,7 @@ const StretchedContactSection = () => {
     {
       initials: "TW",
       name: "Tape Worm",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu95"
@@ -99,7 +107,7 @@ const StretchedContactSection = () => {
     {
       initials: "YW",
       name: "Yellow World",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu97"
@@ -107,7 +115,7 @@ const StretchedContactSection = () => {
     {
       initials: "KT",
       name: "K T",
-      online: "false",
+      online: false,
       notifications: 0,
       clicked: false,
       userId:"etgheu99"
@@ -155,7 +163,7 @@ const StretchedContactSection = () => {
           return (
             <EachUser
               onClick={(event) => handleOneUserClicked(event, index)}
-              eachContactBackgroundColor={val.clicked} key={val.userId}
+              clickedOrNot={val.clicked} key={val.userId}
             >
               <InitialsWrapper>{val.initials}</InitialsWrapper>
               <ContactName>{val.name}</ContactName>
@@ -242,8 +250,8 @@ const ContactsListRendered = styled.div``;
 const EachUser = styled.div`
   border-top: black solid 1px;
   border-right: 1px solid #000000;
-  background-color: ${(props) =>
-    props.eachContactBackgroundColor == true ? "#393d3e" : "#272a2b"};
+  background-color: ${(props:eachContactClickedOrNotType) =>
+    props.clickedOrNot == true ? "#393d3e" : "#272a2b"};
   height: 8vh;
   min-height: 50px;
   width: 24vw;
@@ -292,8 +300,8 @@ const OnlineStatusAndNotificationsGroup = styled.div`
 `;
 
 const OnlineStatus = styled.div`
-  color: ${(props) =>
-    props.onlineStatus === "true" ? "yellow" : "transparent"};
+  color: ${(props:eachContactOnlineStatusType) =>
+    props.onlineStatus === true ? "yellow" : "transparent"};
 `;
 
 const NotificationsCount = styled.div`

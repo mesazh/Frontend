@@ -6,6 +6,10 @@ import AlternateContactSection from "./alternateContactOrChannelSection/Alternat
 import AlternateChannelSection from "./alternateContactOrChannelSection/AlternateChannelSection";
 import AlternatePeopleSection from "./alternateContactOrChannelSection/AlternatePeopleSection";
 
+type displayStatusType = {
+  displayStatus:string
+}
+
 interface Props {}
 
 const AlternateSidebar = () => {
@@ -118,7 +122,7 @@ const OnclickToolkit = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  display: ${(props) => props.displayStatus};
+  display: ${(props:displayStatusType) => props.displayStatus};
   font-size: 14px;
   hr {
     color: white;

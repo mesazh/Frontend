@@ -10,6 +10,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setMesazhIDForTheUserBeingViewed } from "../../slices/userIdSlice";
 import { setNameForTheUserBeingViewed } from "../../slices/userNameSlice";
 
+type eachChannelClickedOrNotType = {
+  clickedOrNot: boolean
+}
+
+type eachChannelOnlineStatusType = {
+  onlineStatus: boolean
+}
+
 interface Props {}
 
 const StretchedChannelSection = () => {
@@ -146,14 +154,11 @@ const handleOneChannelClicked = (e: any, indexOfTheClickedChannel: any) => {
           return (
             <EachChannel
               onClick={(event) => handleOneChannelClicked(event, index)}
-              eachChannelBackgroundColor={val.clicked} key={val.userId}
+              clickedOrNot={val.clicked} key={val.userId}
             >
               <InitialsWrapper>{val.initials}</InitialsWrapper>
               <ChannelName>{val.name}</ChannelName>
               <OnlineStatusAndNotificationsGroup>
-                <OnlineStatus onlineStatus={val.online}>
-                  <FlashOnOutlinedIcon />
-                </OnlineStatus>
                 {val.notifications > 0 ? (
                   <NotificationsCount>{val.notifications}</NotificationsCount>
                 ) : (
@@ -235,8 +240,8 @@ const ChannelsListRendered = styled.div``;
 const EachChannel = styled.div`
   border-top: black solid 1px;
   border-right: 1px solid #000000;
-  background-color: ${(props) =>
-    props.eachChannelBackgroundColor == true ? "#393d3e" : "#272a2b"};
+  background-color: ${(props:eachChannelClickedOrNotType) =>
+    props.clickedOrNot == true ? "#393d3e" : "#272a2b"};
   height: 8vh;
   min-height: 50px;
   width: 24vw;
@@ -284,10 +289,6 @@ const OnlineStatusAndNotificationsGroup = styled.div`
   align-items: center;
 `;
 
-const OnlineStatus = styled.div`
-  color: ${(props) =>
-    props.onlineStatus === "true" ? "yellow" : "transparent"};
-`;
 
 const NotificationsCount = styled.div`
   border: none;

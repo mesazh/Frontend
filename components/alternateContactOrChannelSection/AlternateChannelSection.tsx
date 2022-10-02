@@ -9,13 +9,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setMesazhIDForTheUserBeingViewed } from "../../slices/userIdSlice";
 import { setNameForTheUserBeingViewed } from "../../slices/userNameSlice";
 
+type eachChannelClickedOrNotType = {
+  clickedOrNot: boolean
+}
+
 interface Props {}
 
 const ChannelSection = () => {
   // global state implementation
-  const count = useSelector((state: RootState) => state.counter.value);
-  const userID = useSelector((state: RootState) => state.userId.value);
-  const userName = useSelector((state: RootState) => state.userName.value);
   const dispatch = useDispatch();
 
   const [eachChannelBackgroundColor, setEachUserBackgroundColor] =
@@ -136,21 +137,16 @@ const ChannelSection = () => {
           return (
             <AlternateSidebar key={val.userId}>
               <EachChannelInitials
+                clickedOrNot={val.clicked}
                 onClick={(event) => handleOneChannelClicked(event, index)}
-                eachChannelBackgroundColor={val.clicked}
               >
                 <InitialsWrapper>{val.initials}</InitialsWrapper>
               </EachChannelInitials>
               <EachChannelLongHover
                 className="showOnLongHover"
-                onClick={handleOneChannelClicked}
-                eachChannelBackgroundColor={eachChannelBackgroundColor}
               >
                 <ChannelName>{val.name}</ChannelName>
                 <OnlineStatusAndNotificationsGroup>
-                  <OnlineStatus onlineStatus={val.online}>
-                    <FlashOnOutlinedIcon />
-                  </OnlineStatus>
                   {val.notifications > 0 ? (
                     <NotificationsCount>{val.notifications}</NotificationsCount>
                   ) : (
@@ -215,10 +211,9 @@ const ChannelsListRendered = styled.div``;
 
 const EachChannelLongHover = styled.div`
   border-top: black solid 1px;
-  background-color: ${(props) => props.eachChannelBackgroundColor};
+  background-color: #393d3e;
   height: 50px;
   width: 200px;
-  /* margin-left: 251px; */
   gap: 10px;
   display: flex;
   flex-flow: row nowrap;
@@ -235,8 +230,8 @@ const EachChannelLongHover = styled.div`
 
 const EachChannelInitials = styled.div`
   border-top: black solid 1px;
-  background-color: ${(props) =>
-    props.eachChannelBackgroundColor == true ? "#393d3e" : "#272a2b"};
+  background-color: ${(props:eachChannelClickedOrNotType) =>
+    props.clickedOrNot == true ? "#393d3e" : "#272a2b"};
   height: 50px;
   width: 50px;
   gap: 10px;
@@ -288,11 +283,6 @@ const OnlineStatusAndNotificationsGroup = styled.div`
   align-items: center;
 `;
 
-const OnlineStatus = styled.div`
-  color: ${(props) =>
-    props.onlineStatus === "true" ? "yellow" : "transparent"};
-`;
-
 const NotificationsCount = styled.div`
   border: none;
   background-color: #000000;
@@ -308,8 +298,6 @@ const NotificationsCount = styled.div`
 `;
 
 const AlternateSidebar = styled.div`
-  /* visibility: hidden; */
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;

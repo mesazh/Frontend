@@ -3,10 +3,10 @@ import styled from "styled-components";
 import StretchedContactSection from "./stretchedContactOrChannelSection/StretchedContactSection";
 import StretchedChannelSection from "./stretchedContactOrChannelSection/StretchedChannelSection";
 import StretchedPeopleSection from "./stretchedContactOrChannelSection/StretchedPeopleSection";
-import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import AttachmentOutlinedIcon from "@mui/icons-material/AttachmentOutlined";
-import EmojiEmotionsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
+
+type buttonsbgColorType = {
+  bgColor:string
+}
 
 interface Props {}
 
@@ -116,7 +116,7 @@ const ContactOrChannelButtons = styled.div`
 `;
 
 const ContactButton = styled.div`
-  background-color: ${(props) => props.bgColor};
+  background-color: ${(props:buttonsbgColorType) => props.bgColor};
   color:white;
   width: 8vw;
   height: 7vh;
@@ -136,7 +136,7 @@ const ContactButton = styled.div`
 `;
 
 const PeopleButton = styled.div`
-  background-color: ${(props) => props.bgColor};
+  background-color: ${(props:buttonsbgColorType) => props.bgColor};
   color:white;
   width: 8vw;
   height: 7vh;
@@ -156,7 +156,7 @@ const PeopleButton = styled.div`
 `;
 
 const ChannelButton = styled.div`
-  background-color: ${(props) => props.bgColor};
+  background-color: ${(props:buttonsbgColorType) => props.bgColor};
   color:white;
   width: 8vw;
   height: 7vh;

@@ -14,7 +14,11 @@ import type { RootState } from "../store";
 // importing hooks to work directly on the global states
 import { useSelector } from "react-redux";
 
-interface Props {}
+interface Props { }
+
+type mesazhIDDisplayStateTypes = {
+  mesazhIDDisplayState:boolean
+}
 
 const MainBody = () => {
 
@@ -45,7 +49,6 @@ const MainBody = () => {
       <SecondHalf>
         <MessageSectionHeader>
           <UsernameContainer
-            mesazhIDDisplayState={mesazhIDDisplayState}
             onClick={handleMesazhIDFlipping}
           >
             {userName}
@@ -333,7 +336,7 @@ const MesazhIDContainer = styled.section`
   border-bottom: 1px solid yellow;
   border-radius: 2px;
   padding: 0 5px 0 5px;
-  display: ${(props) =>
+  display: ${(props:mesazhIDDisplayStateTypes) =>
     props.mesazhIDDisplayState === true ? "block" : "none"};
 `;
 

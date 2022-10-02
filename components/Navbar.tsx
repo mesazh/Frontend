@@ -4,6 +4,10 @@ import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
+type onClickToolkitTypes = {
+  displayStatus: string;
+};
+
 interface Props {}
 
 const Navbar = () => {
@@ -27,10 +31,7 @@ const Navbar = () => {
     <NavbarContainer>
       <AppLogo>mesazh</AppLogo>
       <Group2>
-        <OnclickToolkit
-          visibilityStatus={onclickToolkitVisibilityStatus}
-          displayStatus={onclickToolkitDisplayStatus}
-        >
+        <OnclickToolkit displayStatus={onclickToolkitDisplayStatus}>
           <ToolkitOption>
             <UserMascott>AniS</UserMascott>
             <mark>Anivar Saurak</mark>
@@ -77,9 +78,9 @@ const NavbarContainer = styled.div`
   align-items: center;
   color: white;
   height: 10vh;
-  min-height:50px;
-  z-index:1;
-  position:fixed;
+  min-height: 50px;
+  z-index: 1;
+  position: fixed;
 `;
 
 const AppLogo = styled.p`
@@ -101,7 +102,7 @@ const Group2 = styled.div`
 
 const UserMascott = styled.div`
   /* border: white 1px solid; */
-  color:#0e0e0e;
+  color: #0e0e0e;
   background-color: #c9dee6;
   border-radius: 50%;
   width: 40px;
@@ -143,13 +144,11 @@ const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   > .MuiSvgIcon-root {
-    font-size:20px;
+    font-size: 20px;
   }
 `;
 
 const OnclickToolkit = styled.div`
-  /* visibility: ${(props) =>
-    props.visibilityStatus == "flex" ? "visible" : "hidden"}; */
   margin-top: 150px;
   margin-right: -10px;
   background-color: #091317;
@@ -161,33 +160,32 @@ const OnclickToolkit = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  display: ${(props) => props.displayStatus};
-  font-size:14px;
-  >hr{
-    width:100%;
+  display: ${(props: onClickToolkitTypes) => props.displayStatus};
+  font-size: 14px;
+  > hr {
+    width: 100%;
   }
 `;
 
 const ToolkitOption = styled.div`
-z-index:1;
+  z-index: 1;
   /* margin-left:10px; */
   display: flex;
   flex-flow: row nowrap;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   mark {
     background-color: transparent;
     color: white;
-    padding:2px 10px 2px 10px;
-    border-radius:5px;
+    padding: 2px 10px 2px 10px;
+    border-radius: 5px;
   }
   &:hover mark {
     background-color: #142932;
     cursor: pointer;
     color: white;
-    padding:2px 10px 2px 10px;
-    border-radius:5px;
-
+    padding: 2px 10px 2px 10px;
+    border-radius: 5px;
   }
 `;
