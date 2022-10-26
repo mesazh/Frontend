@@ -1,13 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./slices/counterSlice";
 import userIdReducer from "./slices/userIdSlice";
 import userNameReducer from "./slices/userNameSlice";
+import appThemeReducer from "./slices/appThemeSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     userId: userIdReducer,
-    userName: userNameReducer
+    userName: userNameReducer,
+    appTheme: appThemeReducer,
   },
 });
 

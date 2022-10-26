@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Text+Me+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Text+Me+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family:monospace;
-  font-family: 'Space Mono', monospace;
-font-family: 'Text Me One', sans-serif;
+  font-family: monospace;
+  font-family: "Space Mono", monospace;
+  font-family: "Text Me One", sans-serif;
 }
 
 a {
@@ -26,7 +26,7 @@ a {
   }
   body {
     color: white;
-    background:  black;
+    background: black;
   }
 }
 
@@ -36,15 +36,123 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background:  rgb(38, 41, 14);
+  background: rgb(38, 41, 14);
 }
- 
+
 /* Handle */
-::-webkit-scrollbar-thumb {  
-  background:  rgb(154, 122, 53);  
+::-webkit-scrollbar-thumb {
+  background: rgb(154, 122, 53);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: yellow; 
+  background: yellow;
+}
+
+:root {
+  /* MainBody */
+  --user1Color: skyBlue;
+  --user1BackgroundColor: #ffffb3;
+  --user2Color: skyBlue;
+  --user2BackgroundColor: #ffffb3;
+  --messageSectionHeaderBackgroundColor: #272a2b;
+  --messageSectionHeaderColor: white;
+  --usernameContainerColor: white;
+  --messageSectionTyperBackgroundColor: #272a2b;
+  --messageSectionTyperColor: skyBlue;
+  --secondDivOfMessageSectionTyperBackgroundColor: #393d3e;
+  --generalIconWrapperColor: #ced4da;
+  --sendIconWrapperColor: #ced4da;
+
+  /* Navbar */
+  --navbarContainerColor:white;
+  --navbarContainerBackgroundColor:#0e0e0e;
+  --userMascottColor:white;
+  --userMascottBackgroundColor:#272a2b;
+  --onclickToolkitBackgroundColor:#1a1b1b;
+  --toolkitOptionMarkColor:white;
+  --toolkitOptionMarkHoverBackgroundColor:#0e1314;
+  --toolkitThemeOptionMarkColor:white;
+  --toolkitThemeOptionMarkHoverBackgroundColor:#0e1314;
+  --availableThemesBackgroundColor:#1a1b1b;
+  --availableThemesColor:white;
+
+  --sidebarOptionsButtonBackgroundColor:#272a2b;
+  --sidebarOptionsButtonHoverBackgroundColor:#393d3e;
+  --sidebarOptionsButtonRightBorderColor:#000000;
+
+  --toolkitOptionColor:white;
+  --toolkitOptionBackgroundColor:transparent;
+  --sectionToDisplayBackgroundColor:black;
+  --newContactBackgroundColor:black;
+  --newContactBorderRightColor:#272a2b;
+  --newContactColor:white;
+  --iconWrapperColor:black;
+  --iconWrapperBorderColor:black;
+  --iconWrapperBackgroundColor:#393d3e;
+  --eachContactLongHoverBackgroundColor:#393d3e;
+  --eachUserInitialsBorderRightColor:#000000;
+  --eachUserInitialsHoverBackgroundColor:#393d3e;
+  --eachUserInitialsClickedBackgroundColor:#393d3e;
+  --eachUserInitialsNotClickedBackgroundColor:#272a2b;
+  --initialsWrapperColor:white;
+  --initialsWrapperBackgroundColor:#393d3e;
+  --initialsWrapperBorderColor:#000000;
+  --contactNameColor:white;
+  --notificationCountBackgroundColor:#000000;
+  --notificationCountColor:#ffffff;
+}
+
+/* ToolkitThemeOption */
+
+[data-theme="arcade"] {
+  --user1Color: rgb(187, 226, 194);
+  --user1BackgroundColor: #efb3ff;
+  --user2Color: rgb(187, 226, 194);
+  --user2BackgroundColor: #efb3ff;
+  --messageSectionHeaderBackgroundColor: #091e39;
+  --messageSectionHeaderColor: white;
+  --usernameContainerColor: #efb3ff;
+  --messageSectionTyperBackgroundColor: #091e39;
+  --messageSectionTyperColor: rgb(187, 226, 194);
+  --secondDivOfMessageSectionTyperBackgroundColor: #0d2a4f;
+  --generalIconWrapperColor: #1b55a1;
+  --sendIconWrapperColor: #1b55a1;
+  /* Navbar */
+  --navbarContainerColor:rgb(216, 175, 213);
+  --navbarContainerBackgroundColor:#040f1d;
+  --userMascottColor:white;
+  --userMascottBackgroundColor:#0d2a4f;
+  --onclickToolkitBackgroundColor:#07162a;
+  --toolkitOptionMarkColor:white;
+  --toolkitOptionMarkHoverBackgroundColor:#0e1314;
+  --toolkitThemeOptionMarkColor:white;
+  --toolkitThemeOptionMarkHoverBackgroundColor:#0e1314;
+  --availableThemesBackgroundColor:#07162a;
+  --availableThemesColor:white;
+
+  --sidebarOptionsButtonBackgroundColor:#091e39;
+  --sidebarOptionsButtonHoverBackgroundColor:#1a3a67;
+  --sidebarOptionsButtonRightBorderColor:#040f1d;
+  
+  --toolkitOptionColor:white;
+  --toolkitOptionBackgroundColor:transparent;
+  --sectionToDisplayBackgroundColor:#000000;
+  --newContactBackgroundColor:#020a13;
+  --newContactBorderRightColor:#091e39;
+  --newContactColor:white;
+  --iconWrapperColor:#040f1d;
+  --iconWrapperBorderColor:black;
+  --iconWrapperBackgroundColor:#1f477f;
+  --eachContactLongHoverBackgroundColor:#1f477f;
+  --eachUserInitialsBorderRightColor:#040f1d;
+  --eachUserInitialsHoverBackgroundColor:#1f477f;
+  --eachUserInitialsClickedBackgroundColor:#1f477f;
+  --eachUserInitialsNotClickedBackgroundColor:#091e39;
+  --initialsWrapperColor:white;
+  --initialsWrapperBackgroundColor:#1f477f;
+  --initialsWrapperBorderColor:#000000;
+  --contactNameColor:white;
+  --notificationCountBackgroundColor:#000000;
+  --notificationCountColor:#ffffff;
 }

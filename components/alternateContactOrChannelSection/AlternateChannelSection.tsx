@@ -10,8 +10,8 @@ import { setMesazhIDForTheUserBeingViewed } from "../../slices/userIdSlice";
 import { setNameForTheUserBeingViewed } from "../../slices/userNameSlice";
 
 type eachChannelClickedOrNotType = {
-  clickedOrNot: boolean
-}
+  clickedOrNot: boolean;
+};
 
 interface Props {}
 
@@ -142,9 +142,7 @@ const ChannelSection = () => {
               >
                 <InitialsWrapper>{val.initials}</InitialsWrapper>
               </EachChannelInitials>
-              <EachChannelLongHover
-                className="showOnLongHover"
-              >
+              <EachChannelLongHover className="showOnLongHover">
                 <ChannelName>{val.name}</ChannelName>
                 <OnlineStatusAndNotificationsGroup>
                   {val.notifications > 0 ? (
@@ -165,17 +163,19 @@ const ChannelSection = () => {
 export default ChannelSection;
 
 const ChannelSectionContainer = styled.div`
-  color: black;
+  color: transparent;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: flex-start;
+  background-color: var(--navbarContainerBackgroundColor);
+
 `;
 
 const NewChannel = styled.div`
-  border-right: 1px solid #272a2b;
-  background-color: black;
-  color: white;
+border-right: 1px solid var(--newContactBorderRightColor);
+background-color: var(--newContactBackgroundColor);
+color: var(--newContactColor);
   width: 50px;
   height: 50px;
   font-weight: 100;
@@ -192,9 +192,9 @@ const NewChannel = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  color: #000000;
-  border: black 1px solid;
-  background-color: #393d3e;
+color: var(--iconWrapperColor);
+border: var(--iconWrapperBorderColor) 1px solid;
+background-color: var(--iconWrapperBackgroundColor);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -210,8 +210,7 @@ const IconWrapper = styled.div`
 const ChannelsListRendered = styled.div``;
 
 const EachChannelLongHover = styled.div`
-  border-top: black solid 1px;
-  background-color: #393d3e;
+  background-color: var(--eachContactLongHoverBackgroundColor);
   height: 50px;
   width: 200px;
   gap: 10px;
@@ -220,18 +219,14 @@ const EachChannelLongHover = styled.div`
   justify-content: flex-start;
   align-items: center;
   visibility: hidden;
-  &:hover {
-    cursor: pointer;
-    background-color: #393d3e;
-  }
   position: relative;
   z-index: 3;
 `;
 
 const EachChannelInitials = styled.div`
-  border-top: black solid 1px;
-  background-color: ${(props:eachChannelClickedOrNotType) =>
-    props.clickedOrNot == true ? "#393d3e" : "#272a2b"};
+  border-right: var(--eachUserInitialsBorderRightColor) solid 1px;
+  background-color: ${(props: eachChannelClickedOrNotType) =>
+    props.clickedOrNot == true ? "var(--eachUserInitialsClickedBackgroundColor)" : "var(--eachUserInitialsNotClickedBackgroundColor)"};
   height: 50px;
   width: 50px;
   gap: 10px;
@@ -241,7 +236,7 @@ const EachChannelInitials = styled.div`
   align-items: center;
   &:hover {
     cursor: pointer;
-    background-color: #393d3e;
+    background-color: var(--eachUserInitialsHoverBackgroundColor);
   }
   &:hover ~ ${EachChannelLongHover} {
     visibility: visible;
@@ -257,8 +252,8 @@ const EachChannelInitials = styled.div`
 
 const InitialsWrapper = styled.div`
   border: 1px solid black;
-  color: white;
-  background-color: #393d3e;
+  color: var(--initialsWrapperColor);
+  background-color: var(--initialsWrapperBackgroundColor);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -269,7 +264,7 @@ const InitialsWrapper = styled.div`
 `;
 
 const ChannelName = styled.mark`
-  color: white;
+  color: var(--contactNameColor);
   background-color: transparent;
   width: 150px;
   padding-left: 10px;
@@ -285,8 +280,8 @@ const OnlineStatusAndNotificationsGroup = styled.div`
 
 const NotificationsCount = styled.div`
   border: none;
-  background-color: #000000;
-  color: white;
+  background-color: var(--notificationCountBackgroundColor);
+  color: var(--notificationCountColor);
   border-radius: 50%;
   width: 18px;
   height: 18px;

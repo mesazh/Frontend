@@ -226,10 +226,10 @@ function useWindowSize() {
 export default MainBody;
 
 const MainBodyContainer = styled.div`
-  margin-top: 60px;
+  margin-top: 58px;
   width: 100vw;
   height: 90vh;
-  background-color: transparent;
+  background-color: var(--navbarContainerBackgroundColor);
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -243,7 +243,7 @@ const SidebarComponent = styled.div`
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: transparent;
 `;
 
 const SecondHalf = styled.div`
@@ -265,29 +265,30 @@ const MainMessageContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: space-between;
   gap: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
+  /* margin:-10px 0 -10px 0; */
   overflow: auto;
+  background-color:var(--navbarContainerBackgroundColor);
+  padding:0 20px 0 20px;
 `;
 
 const User1 = styled.div`
   text-align: left;
-  color: skyBlue;
+  color: var(--user1Color);
   font-size: 13px;
   font-family: monospace;
   > div > mark {
-    background-color: #ffffb3;
+    background-color: var(--user1BackgroundColor);
     padding: 0 2px 0 2px;
   }
 `;
 
 const User2 = styled.div`
   text-align: right;
-  color: skyBlue;
+  color: var(--user2Color);
   font-size: 13px;
   font-family: monospace;
   > div > mark {
-    background-color: #ffffb3;
+    background-color: var(--user1BackgroundColor);
     padding: 0 2px 0 2px;
   }
 `;
@@ -298,8 +299,8 @@ const SectionToDisplay = styled.div`
 `;
 
 const MessageSectionHeader = styled.div`
-  background-color: #272a2b;
-  color: white;
+  background-color: var(--messageSectionHeaderBackgroundColor);
+  color: var(--messageSectionHeaderColor);
   height: 7vh;
   min-height: 40px;
   font-size: 18px;
@@ -318,7 +319,7 @@ const MessageSectionHeader = styled.div`
 `;
 
 const UsernameContainer = styled.section`
-  color: white;
+  color: var(--usernameContainerColor);
   width: auto;
   font-size: 18px;
   font-weight: 100;
@@ -333,7 +334,7 @@ const UsernameContainer = styled.section`
 `;
 
 const MesazhIDContainer = styled.section`
-  border-bottom: 1px solid yellow;
+  /* border-bottom: 1px solid yellow; */
   border-radius: 2px;
   padding: 0 5px 0 5px;
   display: ${(props:mesazhIDDisplayStateTypes) =>
@@ -341,8 +342,8 @@ const MesazhIDContainer = styled.section`
 `;
 
 const MessageSectionTyper = styled.div`
-  background-color: #272a2b;
-  color: white;
+  background-color: var(--messageSectionTyperBackgroundColor);
+  color: var(--messageSectionTyperColor);
   height: 7vh;
   min-height: 40px;
   font-size: 18px;
@@ -371,14 +372,14 @@ const SecondDivOfMessageSectionTyper = styled.div`
   justify-content: space-around;
   align-items: center;
   > input[type="text"] {
-    width: 40vw;
-    border: #e9ecef 1px solid;
+    width: 50vw;
+    border: none ;
     border-radius: 5px;
     height: 25px;
-    background-color: transparent;
+    background-color: var(--secondDivOfMessageSectionTyperBackgroundColor);
     color: #e9ecef;
     opacity: 0.9;
-    text-align: center;
+    text-align: left;
     padding-left: 10px;
   }
   > input[type="text"]:focus {
@@ -389,7 +390,7 @@ const SecondDivOfMessageSectionTyper = styled.div`
 `;
 
 const GeneralIconWrapper = styled.div`
-  color: #ced4da;
+  color: var(--generalIconWrapperColor);
   background-color: transparent;
   border-radius: 50%;
   width: 30px;
@@ -405,7 +406,7 @@ const GeneralIconWrapper = styled.div`
 `;
 
 const SendIconWrapper = styled.div`
-  color: #ced4da;
+  color: var(--sendIconWrapperColor);
   background-color: transparent;
   border-radius: 50%;
   width: 30px;

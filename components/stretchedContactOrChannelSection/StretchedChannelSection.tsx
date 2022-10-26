@@ -1,9 +1,6 @@
 import React, { useState} from "react";
 import styled from "styled-components";
 import HubIcon from '@mui/icons-material/Hub';
-
-import FlashOnOutlinedIcon from "@mui/icons-material/FlashOnOutlined";
-
 // using global store
 import type { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
@@ -185,9 +182,9 @@ const ChannelSectionContainer = styled.div`
 `;
 
 const NewChannel = styled.div`
-   background-color: black;
-  color: white;
-  border-right: 1px solid #272a2b;
+border-right: 1px solid var(--newContactBorderRightColor);
+background-color: var(--newContactBackgroundColor);
+color: var(--newContactColor);
   width: 24vw;
   height: 8vh;
   min-height: 50px;
@@ -210,19 +207,16 @@ const NewChannel = styled.div`
   gap: 20px;
   > p {
     border: 1px solid #272a2b;
-    /* padding: 5px 15px 5px 15px; */
-    /* border-radius: 5px; */
     font-size: 15px;
     border:none;
-    /* background-color: #393d3e; */
   }
   color: #939d9f;
 `;
 
 const IconWrapper = styled.div`
-color: black;
-border: black 1px solid;
-background-color: #393d3e;
+color: var(--iconWrapperColor);
+border: var(--iconWrapperBorderColor) 1px solid;
+background-color: var(--iconWrapperBackgroundColor);
 border-radius: 50%;
 width: 40px;
 height: 40px;
@@ -239,9 +233,12 @@ const ChannelsListRendered = styled.div``;
 
 const EachChannel = styled.div`
   border-top: black solid 1px;
-  border-right: 1px solid #000000;
-  background-color: ${(props:eachChannelClickedOrNotType) =>
-    props.clickedOrNot == true ? "#393d3e" : "#272a2b"};
+  border-right: var(--eachUserInitialsBorderRightColor) solid 1px;  
+  
+  background-color: ${(props: eachChannelClickedOrNotType) =>
+    props.clickedOrNot == true
+      ? "var(--eachUserInitialsClickedBackgroundColor)"
+      : "var(--eachUserInitialsNotClickedBackgroundColor)"};
   height: 8vh;
   min-height: 50px;
   width: 24vw;
@@ -253,7 +250,7 @@ const EachChannel = styled.div`
   align-items: center;
   &:hover {
     cursor: pointer;
-    background-color: #393d3e;
+    background-color: var(--eachUserInitialsHoverBackgroundColor);
   }
 
   @media only screen and (max-width: 1000px) {
@@ -262,8 +259,8 @@ const EachChannel = styled.div`
 
 const InitialsWrapper = styled.div`
   border: none;
-  background-color: #393d3e;
-  color: white;
+color: var(--initialsWrapperColor);
+background-color: var(--initialsWrapperBackgroundColor);
   border-radius: 50%;
   border: 1px solid black;
   width: 40px;
@@ -292,8 +289,8 @@ const OnlineStatusAndNotificationsGroup = styled.div`
 
 const NotificationsCount = styled.div`
   border: none;
-  background-color: #000000;
-  color: white;
+  background-color: var(--notificationCountBackgroundColor);
+  color: var(--notificationCountColor);
   border-radius: 50%;
   width: 18px;
   height: 18px;

@@ -5,6 +5,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AlternateContactSection from "./alternateContactOrChannelSection/AlternateContactSection";
 import AlternateChannelSection from "./alternateContactOrChannelSection/AlternateChannelSection";
 import AlternatePeopleSection from "./alternateContactOrChannelSection/AlternatePeopleSection";
+import  useOutsideClick  from "./useOutsideClick";
+
 
 type displayStatusType = {
   displayStatus:string
@@ -13,10 +15,18 @@ type displayStatusType = {
 interface Props {}
 
 const AlternateSidebar = () => {
+
   const [onclickToolkitDisplayStatus, setOnclickToolkitDisplayStatus] =
         useState("none");
     
   const [sectionToDisplay, setSectionToDisplay] = useState("Contacts");
+
+  
+  const handleClickOutside = (e: any) => {
+    setOnclickToolkitDisplayStatus("none");
+  };
+
+  const ref = useOutsideClick(handleClickOutside);
 
   const settingsButtonHandler = (e: any) => {
     e.preventDefault();
@@ -49,9 +59,9 @@ const AlternateSidebar = () => {
   return (
     <FirstHalf>
       <Group2>
-        <SettingsNavIcon onClick={settingsButtonHandler}>
+        <SidebarOptionsButton ref={ref} onClick={settingsButtonHandler}>
           <ArrowForwardIosIcon />
-        </SettingsNavIcon>
+        </SidebarOptionsButton>
         <OnclickToolkit displayStatus={onclickToolkitDisplayStatus}>
           <ToolkitOption onClick={handleContactButton}>
             <mark>Contacts</mark>
@@ -80,32 +90,24 @@ const AlternateSidebar = () => {
 export default AlternateSidebar;
 
 const Group2 = styled.div`
-  /* text-align: center;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding-right: 20px; */
-  /* position: fixed; */
 `;
 
-const SettingsNavIcon = styled.div`
-background-color:#272a2b;
-border-right:1px solid black;
+const SidebarOptionsButton = styled.div`
+background-color:var(--sidebarOptionsButtonBackgroundColor);
+border-right:1px solid var(--sidebarOptionsButtonRightBorderColor);
   width: 50px;
   height: 7vh;
   min-height: 40px;
   &:hover {
     cursor: pointer;
-background-color:#393d3e;
+/* background-color:var(--sidebarOptionsButtonHoverBackgroundColor); */
   }
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   > .MuiSvgIcon-root {
-    color: white;
+    color: var(--sendIconWrapperColor);
     font-size: 18px;
   }
 `;
@@ -113,7 +115,7 @@ background-color:#393d3e;
 const OnclickToolkit = styled.div`
   margin-top: -40px;
   margin-left: 50px;
-  background-color: #091317;
+  background-color: var(--onclickToolkitBackgroundColor);
   padding: 15px;
   border: none;
   border-radius: 5px;
@@ -124,23 +126,18 @@ const OnclickToolkit = styled.div`
   gap: 10px;
   display: ${(props:displayStatusType) => props.displayStatus};
   font-size: 14px;
-  hr {
-    color: white;
-    width: 100%;
-  }
   position:fixed;
 `;
 
 const ToolkitOption = styled.div`
-  /* border-bottom: 1px white solid; */
   mark {
-    background-color: transparent;
-    color: white;
+    background-color: var(--toolkitOptionBackgroundColor);
+    color: var(--toolkitOptionColor);
   }
   &:hover mark {
-    background-color: transparent;
+    background-color: var(--toolkitOptionBackgroundColor);
+    color: var(--toolkitOptionColor);
     cursor: pointer;
-    color: white;
   }
   display: flex;
   flex-flow: row nowrap;
@@ -161,7 +158,7 @@ const FirstHalf = styled.div`
 const SectionToDisplay = styled.div`
   height: 83vh;
   overflow-y: scroll;
-  background-color:black;
+  background-color:var(--sectionToDisplayBackgroundColor);
   scrollbar-width: none;  
   ::-webkit-scrollbar {
   display: none;
